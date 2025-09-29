@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Массив чисел > K</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 8px;
+            margin-bottom: 15px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>Массив (через запятую):</label>
+        <input type="text" id="arrayInput" value="3,8,1,12,5">
+        
+        <label>Число K:</label>
+        <input type="number" id="kInput" value="4">
+        
+        <button type="button" onclick="calculate()">Посчитать</button>
+        
+        <div class="result" id="result"></div>
+    </form>
+
+    <script>
+        function calculate() {
+            let arrayInput = document.getElementById('arrayInput').value;
+            let k = parseInt(document.getElementById('kInput').value);
+            
+            let A = arrayInput.split(',').map(Number);
+            let result = A.filter(num => num > k);
+            
+            document.getElementById('result').innerHTML = 
+                'Результат: ' + result.join(', ');
+        }
+        
+        calculate();
+    </script>
+</body>
+</html>
