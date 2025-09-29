@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вычисление суммы ряда</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        
+        .formula {
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            -moz-appearance: textfield;
+        }
+        
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="formula">
+            ln x = Σ [(x-1)<sup>n+1</sup> / ((n+1) × (x+1)<sup>n+1</sup>)] <br>
+            (для i от 0 до n)
+        </div>
+        
+        <div class="input-group">
+            <label>Предел (n):</label>
+            <input name="getN" type="number" min="0" value="">
+        </div>
+        
+        <div class="input-group">
+            <label>Значение x:</label>
+            <input name="getX" type="number" step="any" value="">
+        </div>
+        
+        <button type="button" onclick="calculate()">Вычислить</button>
+        
+        <div class="result">
+            Результат: <span id="resultValue">0</span>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            let n = parseInt(document.querySelector('input[name="getN"]').value);
+            let x = parseFloat(document.querySelector('input[name="getX"]').value);
+            
+            if (isNaN(n) || isNaN(x) || n < 0) {
+                alert("Введите корректные значения");
+                return;
+            }
+            
+            let result = calculating(n, x);
+            document.getElementById('resultValue').textContent = result.toString();
+        }
+
+        function calculating(n, x) {
+            let s = 0;
+            
+            for(let i = 0; i <= n; i++) {
+                let numerator = Math.pow(x - 1, i + 1);
+                let denominator = (i + 1) * Math.pow(x + 1, i + 1);
+                s += numerator / denominator;
+            }
+            
+            return s;
+        }
+        
+        window.onload = calculate;
+    </script>
+</body>
+</html>
