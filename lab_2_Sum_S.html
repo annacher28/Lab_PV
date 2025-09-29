@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Вычисление суммы S</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            -moz-appearance: textfield;
+        }
+        
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            text-align: left;
+        }
+        
+        .formula {
+            margin: 15px 0;
+            padding: 10px;
+            background: #e8f4fd;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Вычисление суммы S</h3>
+        
+        <div class="formula">
+            S = 3 + 5 + 7 + 9 + 11 + ... + x
+        </div>
+        
+        <input type="number" id="xInput" placeholder="Введите число x" step="any" value="7">
+        
+        <button onclick="calculate()">Вычислить</button>
+        
+        <div class="result" id="result">
+            
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            let x = parseFloat(document.getElementById('xInput').value);
+            let result = document.getElementById('result');
+            
+            if (isNaN(x)) {
+                result.innerHTML = 'Введите корректное число';
+                return;
+            }
+
+            let s_for = 0;
+            let current_for = 3;
+            let steps_for = [];
+            
+            if (x >= 3) {
+                for (let i = 0; current_for <= x; i++) {
+                    s_for += current_for;
+                    steps_for.push(current_for);
+                    current_for += 2;
+                }
+            }
+
+            let s_while = 0;
+            let current_while = 3;
+            let steps_while = [];
+            
+            while (current_while <= x) {
+                s_while += current_while;
+                steps_while.push(current_while);
+                current_while += 2;
+            }
+            
+            result.innerHTML = `
+                <strong>FOR:</strong><br>
+                S = ${s_for}<br><br>
+                <strong>WHILE:</strong><br>
+                S = ${s_while}
+            `;
+        }
+
+        calculate();
+    </script>
+</body>
+</html>
