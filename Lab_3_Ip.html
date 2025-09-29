@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск IP-адреса в тексте</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .ip-address {
+            font-family: monospace;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Поиск IP-адреса в тексте</h2>
+        
+        <textarea id="textInput">Сервер базы данных находится по адресу 10.0.0.5, веб-сервер использует 172.16.0.10, а файловое хранилище доступно по 192.168.2.15. Для внешних подключений мы используем адрес 93.184.216.34, а тестовый стенд работает на 10.10.10.1.</textarea>
+        
+        <button onclick="findIP()">Найти IP-адрес</button>
+        
+        <div class="result" id="result">
+            Результат появится здесь
+        </div>
+    </div>
+
+    <script>
+        function findIP() {
+            let text = document.getElementById('textInput').value;
+            let pattern = /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/g;
+            let matches = text.match(pattern);
+            
+            let result = document.getElementById('result');
+            
+            if (matches) {
+                result.innerHTML = 'IP-адреса:<br>';
+                matches.forEach(ip => {
+                    result.innerHTML += `<div class="ip-address">${ip}</div>`;
+                });
+            } else {
+                result.innerHTML = 'IP-адреса не найдены';
+            }
+        }
+        
+        findIP();
+    </script>
+</body>
+</html>
