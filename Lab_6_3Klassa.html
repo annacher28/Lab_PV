@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная работа №6</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+        }
+        
+        .object-info {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div id="objectsInfo"></div>
+        
+        <button onclick="showCombinedInfo()">Показать комби информацию</button>
+        
+        <div class="result" id="result">
+        </div>
+    </div>
+
+    <script>
+        
+        class Person {
+            constructor(Name, Familiy, Dr) {
+                this.Name = Name;    
+                this.Familiy = Familiy;      
+                this.Dr = Dr;    
+            }
+            
+            displayInfo() {
+                return `Человек: ${this.Name} ${this.Familiy}, Год рождения: ${this.Dr}`;
+            }
+        }
+
+        class Car {
+            constructor(brand, release, dvizhok) {
+                this.brand = brand;                    
+                this.release = release; 
+                this.dvizhok = dvizhok;     
+            }
+
+            displayInfo() {
+                return `Автомобиль: ${this.brand}, Год выпуска: ${this.release}, Объем двигателя: ${this.dvizhok} литров`;
+            }
+        }
+
+        class Book {
+            constructor(title, author, production) {
+                this.title = title;           
+                this.author = author;         
+                this.production = production; 
+            }
+
+            displayInfo() {
+                return `Книга: "${this.title}", Автор: ${this.author}, Год выпуска: ${this.production}`;
+            }
+
+            getCombinedInfo(person, car) {
+                return `${person.Name} ${person.Familiy} читает книгу "${this.title}" про машину ${car.brand}`;
+            }
+        }
+
+        // Создаем объекты каждого класса
+        const person = new Person("Иван", "Кульков", 1990);
+        const car = new Car("BMW X5 xDrive40i", 2023,  3.0);
+        const book = new Book("Преступление и наказание", "Фёдор Достоевский", 1866);
+
+        // Функция для отображения информации об объектах
+        function displayObjectsInfo() {
+            const container = document.getElementById('objectsInfo');
+            container.innerHTML = `
+                <div class="object-info">${person.displayInfo()}</div>
+                <div class="object-info">${car.displayInfo()}</div>
+                <div class="object-info">${book.displayInfo()}</div>
+            `;
+        }
+
+        // Функция для показа комбинированной информации
+        function showCombinedInfo() {
+            const result = document.getElementById('result');
+            // Вызываем метод getCombinedInfo у объекта book, передавая person и car
+            const combinedInfo = book.getCombinedInfo(person, car);
+            result.innerHTML = `<strong>${combinedInfo}</strong>`;
+        }
+
+        // Показываем информацию об объектах при загрузке
+        window.onload = function() {
+            displayObjectsInfo();
+        };
+    </script>
+</body>
+</html>
