@@ -97,12 +97,10 @@
             }
         }
 
-        // Создаем объекты каждого класса
         const person = new Person("Иван", "Кульков", 1990);
         const car = new Car("BMW X5 xDrive40i", 2023,  3.0);
         const book = new Book("Преступление и наказание", "Фёдор Достоевский", 1866);
 
-        // Функция для отображения информации об объектах
         function displayObjectsInfo() {
             const container = document.getElementById('objectsInfo');
             container.innerHTML = `
@@ -112,15 +110,12 @@
             `;
         }
 
-        // Функция для показа комбинированной информации
         function showCombinedInfo() {
             const result = document.getElementById('result');
-            // Вызываем метод getCombinedInfo у объекта book, передавая person и car
             const combinedInfo = book.getCombinedInfo(person, car);
             result.innerHTML = `<strong>${combinedInfo}</strong>`;
         }
 
-        // Показываем информацию об объектах при загрузке
         window.onload = function() {
             displayObjectsInfo();
         };
