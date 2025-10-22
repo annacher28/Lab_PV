@@ -58,11 +58,11 @@
             border-radius: 5px;
         }
         
-        .employee-list {
+        .Chel-list {
             margin: 10px 0;
         }
         
-        .employee-item {
+        .Chel-item {
             padding: 8px;
             margin: 5px 0;
             background: white;
@@ -75,18 +75,18 @@
     <div class="container">
         
         <div class="input-group">
-            <label>Минимальная зарплата:</label>
+            <label>Минимальная ЗП:</label>
             <input type="number" id="zp" value="120000">
         </div>
         
-        <button onclick="showEmployeesBySalary()">Список работников с зарплатой выше</button>
+        <button onclick="showChelsBySalary()">Список работников с ЗП выше</button>
         
         <div class="input-group">
             <label>Должность:</label>
             <input type="text" id="dolzhnosty" value="Разработчик C++">
         </div>
         
-        <button onclick="showEmployeesByDolzhnosty()">Список работников по должности</button>
+        <button onclick="showChelsByDolzhnosty()">Список работников по должности</button>
         
         <div class="result" id="result">
             Результаты появятся здесь
@@ -94,83 +94,83 @@
     </div>
 
     <script>
-        class Employee {
-            constructor(name, position, startYear, salary) {
+        class Chel {
+            constructor(name, dolzhnost, Year, zp) {
                 this.name = name;     
-                this.position = position;      
-                this.startYear = startYear;   
-                this.salary = salary;          
+                this.dolzhnost = dolzhnost;      
+                this.Year = Year;   
+                this.zp = zp;          
             }
         }
 
-        const employees = [
-            new Employee("Розов Н.И.", "Разработчик C++", 2022, 185000),
-            new Employee("Фролов У.П.", "Дизайнер", 2023, 120000),
-            new Employee("Смирнов М.С.", "Разработчик C++", 2022, 190000),
-            new Employee("Лапухов А.В.", "Разработчик Python", 2023, 150000),
-            new Employee("Кульков И.К.", "AQA", 2022, 100000)
+        const Chels = [
+            new Chel("Розов Н.И.", "Разработчик C++", 2022, 185000),
+            new Chel("Фролов У.П.", "Дизайнер", 2023, 120000),
+            new Chel("Смирнов М.С.", "Разработчик C++", 2022, 190000),
+            new Chel("Лапухов А.В.", "Разработчик Python", 2023, 150000),
+            new Chel("Кульков И.К.", "AQA", 2022, 100000)
         ];
 
-        function showEmployeesBySalary() {
-            const minSalary = parseInt(document.getElementById('zp').value);
+        function showChelsBySalary() {
+            const Minzp = parseInt(document.getElementById('zp').value);
             const result = document.getElementById('result');
             
-            const filteredEmployees = employees.filter(emp => emp.salary > minSalary);
+            const filteredChels = Chels.filter(ch => ch.zp > Minzp);
             
-            if (filteredEmployees.length > 0) {
-                let html = `<h4>Работники с зарплатой выше ${minSalary}:</h4>`;
-                filteredEmployees.forEach(emp => {
+            if (filteredChels.length > 0) {
+                let html = `<h4>Работники с ЗП выше ${Minzp}:</h4>`;
+                filteredChels.forEach(ch => {
                     html += `
-                        <div class="employee-item">
-                            <strong>${emp.name}</strong><br>
-                            Должность: ${emp.position}<br>
-                            Год поступления: ${emp.startYear}<br>
-                            Зарплата: ${emp.salary} руб.
+                        <div class="Chel-item">
+                            <strong>${ch.name}</strong><br>
+                            Должность: ${ch.dolzhnost}<br>
+                            Год поступления: ${ch.Year}<br>
+                            ЗП: ${ch.zp} руб.
                         </div>
                     `;
                 });
                 result.innerHTML = html;
             } else {
-                result.innerHTML = `<h4>Нет работников с зарплатой выше ${minSalary}</h4>`;
+                result.innerHTML = `<h4>Нет работников с ЗП выше ${Minzp}</h4>`;
             }
         }
 
-        function showEmployeesByDolzhnosty() {
-            const position = document.getElementById('dolzhnosty').value;
+        function showChelsByDolzhnosty() {
+            const dolzhnost = document.getElementById('dolzhnosty').value;
             const result = document.getElementById('result');
 
-            const filteredEmployees = employees.filter(emp => 
-                emp.position.toLowerCase().includes(position.toLowerCase())
+            const filteredChels = Chels.filter(ch => 
+                ch.dolzhnost.toLowerCase().includes(dolzhnost.toLowerCase())
             );
             
-            if (filteredEmployees.length > 0) {
-                let html = `<h4>Работники с должностью "${position}":</h4>`;
-                filteredEmployees.forEach(emp => {
+            if (filteredChels.length > 0) {
+                let html = `<h4>Работники с должностью "${dolzhnost}":</h4>`;
+                filteredChels.forEach(ch => {
                     html += `
-                        <div class="employee-item">
-                            <strong>${emp.name}</strong><br>
-                            Должность: ${emp.position}<br>
-                            Год поступления: ${emp.startYear}<br>
-                            Зарплата: ${emp.salary} руб.
+                        <div class="Chel-item">
+                            <strong>${ch.name}</strong><br>
+                            Должность: ${ch.dolzhnost}<br>
+                            Год поступления: ${ch.Year}<br>
+                            ЗП: ${ch.zp} руб.
                         </div>
                     `;
                 });
                 result.innerHTML = html;
             } else {
-                result.innerHTML = `<h4>Нет работников с должностью "${position}"</h4>`;
+                result.innerHTML = `<h4>Нет работников с должностью "${dolzhnost}"</h4>`;
             }
         }
 
         window.onload = function() {
             const result = document.getElementById('result');
             let html = `<h4>Все работники:</h4>`;
-            employees.forEach(emp => {
+            Chels.forEach(ch => {
                 html += `
-                    <div class="employee-item">
-                        <strong>${emp.name}</strong><br>
-                        Должность: ${emp.position}<br>
-                        Год поступления: ${emp.startYear}<br>
-                        Зарплата: ${emp.salary} руб.
+                    <div class="Chel-item">
+                        <strong>${ch.name}</strong><br>
+                        Должность: ${ch.dolzhnost}<br>
+                        Год поступления: ${ch.Year}<br>
+                        ЗП: ${ch.zp} руб.
                     </div>
                 `;
             });
