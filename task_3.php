@@ -10,6 +10,6 @@ foreach ($A as $number) {
 }
 
 echo "Исходный массив A: " . implode(', ', $A) . "\n";
-echo "Заданное число K: " . $K . "\n";
+echo "Заданное число K: $K\n";
 echo "Числа большие чем K: " . implode(', ', $result) . "\n";
 ?>
