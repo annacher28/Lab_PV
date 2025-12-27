@@ -1,6 +1,5 @@
 function findIP(str) {
-    const ipPattern = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/;
-    
+    const ipPattern = /(\b?\b|1\b{2}|2[0-4]\b|25[0-5])\.(\b?\b|1\b{2}|2[0-4]\b|25[0-5])\.(\b?\b|1\b{2}|2[0-4]\b|25[0-5])\.(\b?\b|1\b{2}|2[0-4]\b|25[0-5]\.)/g
     const match = str.match(ipPattern);
     return match ? match[0] : null;
 }
