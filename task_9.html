@@ -1,0 +1,43 @@
+<!-- Задание на 9 работу по проектированию. На странице есть три рисунка и три ссылки. 
+1) необходимо посчитать количество рисунков и ссылок 
+2) сделать пользователю возможность изменения рисунка на странице -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <form>
+        <select placeholder="номер" id="id">
+            <option value="i1">1</option>
+            <option value="i2">2</option>
+            <option value="i3">3</option>
+        </select>
+        <input type="text" placeholder="Путь" id="patch">
+        <button type="button" onclick="change()" id="patch">Применить</button>
+    </form>
+
+    <img id="i1" src="1.jpg">
+    <img id="i2" src="2.jpg">
+    <img id="i3" src="3.jpg">
+
+    <a href="#">Ссылка</a>
+    <a href="#">Ссылка</a>
+    <a href="#">Ссылка</a>
+
+    <script type="text/javascript">
+        var allimg = document.images;
+        var alllnk = document.links;
+        document.write(allimg.length);
+        document.write(alllnk.length);
+
+        function change() {
+            var id = document.getElementById('id').value;
+            var patch = document.getElementById('patch').value;
+            var image = document.getElementById(id);
+            image.setAttribute('src', patch);
+        }
+    </script>
+</body>
+</html>
