@@ -1,0 +1,52 @@
+<!-- Задание на 11 лабораторную работу по проектированию. Сделать версию для слабовидящих. 
+Текст изменяется по нажатию на кнопки 22px, 20px, 18px. Цвет фона и текста меняется на черный, белый и голубой. 
+Также по кнопкам должны включаться и выключаться изображения на странице. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <button type="button" onclick="imgOn()">Включить</button>
+    <button type="button" onclick="imgOff()">Выключить</button>
+    <p id="text">Текст</p>
+    <button type="button" onclick="change1()">18</button>
+    <button type="button" onclick="change2()">20</button>
+    <button type="button" onclick="change3()">22</button>
+    <img id="image1" src="1.jpg">
+
+    <script type="text/javascript">
+        function change1() {
+            document.body.style.backgroundColor = "black";
+            var text = document.getElementById('text');
+            text.style.color = "white";
+            text.style.fontSize = "18px";
+        }
+
+        function change2() {
+            document.body.style.backgroundColor = "white";
+            var text = document.getElementById('text');
+            text.style.color = "blue";
+            text.style.fontSize = "20px";
+        }
+
+        function change3() {
+            document.body.style.backgroundColor = "blue";
+            var text = document.getElementById('text');
+            text.style.color = "black";
+            text.style.fontSize = "22px";
+        }
+
+        function imgOn() {
+            var image1 = document.getElementById('image1');
+            image1.style.visibility = "visible";
+        }
+
+        function imgOff() {
+            var image1 = document.getElementById('image1');
+            image1.style.visibility = "hidden";
+        }
+    </script>
+</body>
+</html>
