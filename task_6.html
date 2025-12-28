@@ -1,0 +1,60 @@
+<!-- Лабораторная работа № 6 по проектированию. Создать три класса первый описывает человека. У него есть поля:
+Имя, Фамилия, год рождения
+Второй описывает автомобиль. У него есть поля:
+Марка, Год выпуска, Объем двигателя
+Третий описывает книгу. У него есть поля:
+Название, Автор, Год выпуска.
+В каждом классе создать конструктор и метод, который выводит значения всех полей.
+В одном классе создать метод, который принимает в качестве параметра два других объекта и выводит строку в формате:
+<Имя человека> читает книгу <Название книги> про машину <Название машины> -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    class Person {
+      name;
+      second_name;
+      year;
+      constructor(name, second_name, year) {
+        this.name = name;
+        this.second_name = second_name;
+        this.year = year;
+      }
+    }
+
+    class Car {
+      marka;
+      year;
+      v;
+      constructor(marka, year, v) {
+        this.marka = marka;
+        this.year = year;
+        this.v = v;
+      }
+    }
+
+    class Book {
+      nazvanie;
+      author;
+      year;
+      display(n, m) {
+        document.write(n.name + ' читает ' + this.nazvanie + ' про ' + m.marka);
+      }
+      constructor(nazvanie, author, year) {
+        this.nazvanie = nazvanie;
+        this.author = author;
+        this.year = year;
+      }
+    }
+
+    var tom = new Person("Tom", "Soyer", 1987);
+    var bmw = new Car("BMW", 2025, 20);
+    var book = new Book("Инструкция", "BMW", 2025);
+    book.display(tom, bmw);
+  </script>
+</body>
+</html>
