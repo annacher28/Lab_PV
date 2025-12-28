@@ -1,0 +1,44 @@
+<!-- Задание на 10 работу по проектированию. Создать страницу с тремя однострочными текстовыми полями, текстом и ссылкой. 
+В первое поле вводится цвет и после нажатия на соответствующую кнопку меняется фон страницы на введенный цвет. 
+После ввода цвета во второе поле и нажатия на кнопку изменяется цвет текста. 
+В третье поле вводится адрес ссылки, после нажатия на кнопку ссылка изменяется. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <form>
+        <select placeholder="номер" id="color">
+            <option value="black">1</option>
+            <option value="blue">2</option>
+            <option value="red">3</option>
+        </select>
+        <input type="text" placeholder="" id="link_addr">
+        <button type="button" onclick="changeColor()">Фон</button>
+    </form>
+    <button type="button" onclick="changeTextColor()">Цвет</button>
+    <button type="button" onclick="changeLink()">Ссылка</button>
+    <a id="link" href="#">Ссылка</a>
+
+    <script type="text/javascript">
+        function changeColor() {
+            var bgcolor = document.getElementById('color').value;
+            document.body.style.backgroundColor = bgcolor;
+        }
+
+        function changeTextColor() {
+            var textcolor = document.getElementById('color').value;
+            var link = document.getElementById('link');
+            link.style.color = textcolor;
+        }
+
+        function changeLink() {
+            var link = document.getElementById('link');
+            var link_addr = document.getElementById('link_addr').value;
+            link.setAttribute('href', link_addr);
+        }
+    </script>
+</body>
+</html>
