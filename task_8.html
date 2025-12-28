@@ -1,0 +1,31 @@
+<!-- Задание на 8 ЛР по проектированию. Создать метод для создания объектов. 
+Метод должен создать сначала три человека (с полями имя и возраст), затем три машины (с полями марка и дата выпуска), затем три книги 
+(с полями название и дата публикации). Сформировать три массива из созданных объектов. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <script type="text/javascript">
+      function create(propName1, propValue1, propName2, propValue2) {
+        return {
+          [propName1]: propValue1,
+          [propName2]: propValue2
+        };
+      }
+
+      var person1 = create("name", "", "age", 18);
+      var person2 = create("name", "", "age", 18);
+      var person3 = create("name", "", "age", 18);
+
+      var car1 = create("name", "", "age", "18.08.2025");
+      var car2 = create("name", "", "age", "18.08.2025");
+      var car3 = create("name", "", "age", "18.08.2025");
+
+      var book1 = create("name", "", "age", "18.08.2025");
+      var book2 = create("name", "", "age", "18.08.2025");
+      var book3 = create("name", "", "age", "18.08.2025");
+    </script>
+  </body>
+</html>
