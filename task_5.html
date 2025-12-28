@@ -1,0 +1,57 @@
+<!-- Лабораторная работа №5. Создать массив из пяти объектов класса с полями: Фамилия и инициалы, Должность, Год поступления на работу, Зарплата.
+Вывести: а) список работников, зарплата которых больше заданной;
+б) список работников, занимающих заданную должность. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form>
+      <input type="number" placeholder="Зарплата" id="salary">
+      <input type="text" placeholder="Должность" id="status">
+      <button type="button" onclick="list()">Список</button>
+    </form>
+
+    <script type="text/javascript">
+      class Employee {
+        name;
+        status;
+        year;
+        salary;
+
+        constructor(name, status, year, salary) {
+          this.name = name;
+          this.status = status;
+          this.year = year;
+          this.salary = salary;
+        }
+      }
+
+      var emp1 = new Employee("1", "worker", 2007, 2000);
+      var emp2 = new Employee("2", "worker", 2007, 10000);
+      var emp3 = new Employee("3", "worker", 2007, 10000);
+      var emp4 = new Employee("4", "worker", 2007, 10000);
+      var emp5 = new Employee("5", "not_worker", 2007, 10000);
+
+      var arr = [emp1, emp2, emp3, emp4, emp5];
+
+      function list() {
+        var salary = document.getElementById('salary').value;
+        var status = document.getElementById('status').value;
+        console.log("Сотрудники с зарплатой ниже " + salary);
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i].salary < salary) {
+            console.log(arr[i].name);
+          }
+        }
+        console.log("Сотрудники с должностью " + status);
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i].status == status) {
+            console.log(arr[i].name);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
