@@ -33,8 +33,12 @@
 // CS-5.
 
 
-const array = [1, 2, 3, 4, 5]; 
-for (let i = 0; i < array.length; i++) {
-    if (array[i] === 4) {
-        console.log('Есть!');
-        break; }}
+const input = prompt("Введите элементы массива через пробел:");
+const array = input.split(' ').map(Number);
+
+for (const element of array) {
+    if (element === 4) {
+        console.log("Есть!");
+        break;
+    }
+}
